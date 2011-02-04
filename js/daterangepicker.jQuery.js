@@ -55,7 +55,9 @@ jQuery.fn.daterangepicker = function(settings){
 		onClose: function(){},
 		onOpen: function(){},
 		onChange: function(){},
-		datepickerOptions: null //object containing native UI datepicker API options
+		datepickerOptions: null, //object containing native UI datepicker API options
+		datepickerStartOptions: {}, // //object containing native UI datepicker API options specific for the startdate
+		datepickerEndOptions: {}, // //object containing native UI datepicker API options specific for the enddate
 	}, settings);
 	
 	
@@ -268,6 +270,8 @@ jQuery.fn.daterangepicker = function(settings){
 	rpPickers.find('.range-start, .range-end')
 		.datepicker(options.datepickerOptions);
 	
+	rpPickers.find('.range-start').datepicker('option', options.datepickerStartOptions);
+	rpPickers.find('.range-end').datepicker('option', options.datepickerEndOptions);
 	
 	rpPickers.find('.range-start').datepicker('setDate', inputDateA);
 	rpPickers.find('.range-end').datepicker('setDate', inputDateB);
@@ -367,6 +371,3 @@ jQuery.fn.daterangepicker = function(settings){
 	rp.click(function(){return false;}).hide();
 	return this;
 }
-
-
-
